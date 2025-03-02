@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="FamilyInstanceUtils.cs" />
     <Compile Include="FamilySymbolUtils.cs" />
+    <Compile Include="DuctUtils.cs" />
     <Compile Include="TagsUtils.cs" />
     <Compile Include="LevelsUtils.cs" />
     <Compile Include="PipesUtils.cs" />
@@ -58,6 +59,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*.*" "C:\Program Files\RevitAPITrainig\" /y /i</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

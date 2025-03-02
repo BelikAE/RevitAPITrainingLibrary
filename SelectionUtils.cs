@@ -60,19 +60,14 @@ namespace RevitAPITrainingLibrary
 
             List<XYZ> points = new List<XYZ>();
 
-            while (true)
+            for (int i = 0; i < 2; i++)
             {
                 XYZ pickedPoint = null;
-                try
-                {
-                    pickedPoint = uidoc.Selection.PickPoint(objectSnapTypes, promptMessage);
-                }
-                catch (Autodesk.Revit.Exceptions.OperationCanceledException ex)
-                {
-                    break;
-                }
+                pickedPoint = uidoc.Selection.PickPoint(objectSnapTypes, promptMessage);
                 points.Add(pickedPoint);
             }
+
+
 
             return points;
         }
