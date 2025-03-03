@@ -50,6 +50,7 @@
     <Compile Include="FamilyInstanceUtils.cs" />
     <Compile Include="FamilySymbolUtils.cs" />
     <Compile Include="DuctUtils.cs" />
+    <Compile Include="FurnitureUtils.cs" />
     <Compile Include="TagsUtils.cs" />
     <Compile Include="LevelsUtils.cs" />
     <Compile Include="PipesUtils.cs" />
