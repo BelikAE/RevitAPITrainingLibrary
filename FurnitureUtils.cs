@@ -11,16 +11,16 @@ namespace RevitAPITrainingLibrary
 {
     public class FurnitureUtils
     {
-        public static List<FamilyType> GetFurnitureType(ExternalCommandData commandData)
+        public static List<FamilySymbol> GetFurnitureType(ExternalCommandData commandData)
         {
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
-            List<FamilyType> familyType = new FilteredElementCollector(doc)
-                                                        .OfClass(typeof(FamilyType))
+            List<FamilySymbol> familyType = new FilteredElementCollector(doc)
                                                         .OfCategory(BuiltInCategory.OST_Furniture)
-                                                        .Cast<FamilyType>()
+                                                        .OfClass(typeof(FamilySymbol))
+                                                        .Cast<FamilySymbol>()
                                                         .ToList();
             return familyType;
         }
