@@ -52,33 +52,28 @@ namespace RevitAPITrainingLibrary
             return elementList;
         }
 
+
         public static List<XYZ> GetPoints(ExternalCommandData commandData,
-                            string promptMessage, ObjectSnapTypes objectSnapTypes)
+                              string promptMessage, ObjectSnapTypes objectSnapTypes)
         {
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
 
             List<XYZ> points = new List<XYZ>();
 
-            for (int i = 0; i < 2; i++)
+            while (true)
             {
                 XYZ pickedPoint = null;
-                pickedPoint = uidoc.Selection.PickPoint(objectSnapTypes, promptMessage);
+                try
+                {
+                    pickedPoint = uidoc.Selection.PickPoint(objectSnapTypes, promptMessage);
+                }
+                catch (Autodesk.Revit.Exceptions.OperationCanceledException ex)
+                {
+                    break;
+                }
                 points.Add(pickedPoint);
             }
-
-            return points;
-
-        }
-
-
-        public static XYZ GetPoint(ExternalCommandData commandData,
-                            string promptMessage)
-        {
-            UIApplication uiapp = commandData.Application;
-            UIDocument uidoc = uiapp.ActiveUIDocument;
-
-            XYZ points = uidoc.Selection.PickPoint(promptMessage);
 
             return points;
         }
