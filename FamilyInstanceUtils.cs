@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Structure;
 using Autodesk.Revit.UI;
 
 
@@ -33,6 +34,24 @@ namespace RevitAPITrainingLibrary
                 t.Commit();
             }
             return familyInstance;
+        }
+
+
+
+        public static void CreateElementsAlongLine(Document doc, XYZ start, XYZ end, FamilySymbol symbol, int count)
+        {
+            using (var ts = new Transaction(doc, "Transaction"))
+            {
+                ts.Start();
+                var line = Line.CreateBound(start, end);
+                for (int i = 1; i <= count; i++)
+                {
+                    double param = (double)i / (count + 1);
+                    var position = line.Evaluate(param, true);
+                    doc.Create.NewFamilyInstance(position, symbol, StructuralType.NonStructural);
+                }
+                ts.Commit();
+            }
         }
     }
 }
