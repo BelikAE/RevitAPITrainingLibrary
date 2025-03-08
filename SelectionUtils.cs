@@ -103,5 +103,13 @@ namespace RevitAPITrainingLibrary
 
             return points;
         }
+
+        public static List<T> GetElementsByType<T>(Document doc) where T : Element
+        {
+            return new FilteredElementCollector(doc)
+                .OfClass(typeof(T))
+                .Cast<T>()
+                .ToList();
+        }
     }
 }

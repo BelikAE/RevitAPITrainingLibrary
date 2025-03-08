@@ -23,5 +23,19 @@ namespace RevitAPITrainingLibrary
 
             return familySymbols;
         }
+
+        public static List<FamilySymbol> GetFamilySymbolsTitleBlock(ExternalCommandData commandData)
+        {
+            var uiapp = commandData.Application;
+            var uidoc = uiapp.ActiveUIDocument;
+            var doc = uidoc.Document;
+
+            var titleBlock = new FilteredElementCollector(doc)
+                                        .OfCategory(BuiltInCategory.OST_TitleBlocks)
+                                        .Cast<FamilySymbol>().ToList();
+
+
+            return titleBlock;
+        }
     }
 }
