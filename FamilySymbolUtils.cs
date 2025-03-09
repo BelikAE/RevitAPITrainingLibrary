@@ -30,9 +30,11 @@ namespace RevitAPITrainingLibrary
             var uidoc = uiapp.ActiveUIDocument;
             var doc = uidoc.Document;
 
-            var titleBlock = new FilteredElementCollector(doc)
+            List<FamilySymbol> titleBlock = new FilteredElementCollector(doc)
+                                        .OfClass(typeof(FamilySymbol))
                                         .OfCategory(BuiltInCategory.OST_TitleBlocks)
-                                        .Cast<FamilySymbol>().ToList();
+                                        .Cast<FamilySymbol>()
+                                        .ToList();
 
 
             return titleBlock;
